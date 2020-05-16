@@ -1,6 +1,6 @@
 package pages;
 
-public class YandexMarketPage {
+public class InstagramProfilePage {
 //to be implemented
 
 }
