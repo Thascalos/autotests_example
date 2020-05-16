@@ -65,6 +65,12 @@ task YandexMarketTests(type: Test) {
     }
 }
 
+task InstagramTests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'instagram'
+    }
+}
+
 help {
     doFirst {
         println ""
