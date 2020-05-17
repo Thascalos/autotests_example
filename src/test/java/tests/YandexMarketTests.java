@@ -13,15 +13,17 @@ import static helpers.Environment.*;
 public class YandexMarketTests extends TestBase {
 
     @Test
-    @Description("Checking first element of finded results")
-    void checkFirstElementOnCatalog() {
+    @Description("Checking item can be found")
+    void checkItemCanBeFound() {
         open(yandexMarketUrl);
+
         $("html").shouldHave(text("Яндекс.Маркет"));
-        $(byId("header-search")).val(yandexMarketItemName);
-        $x("//button[div[text()=\"Найти\"]]").click();
+        $("#header-search").val(yandexMarketItemName).pressEnter();
         $x("//h3/a[1]").click();
         switchTo().window(1);
-        $(byTagName("h1")).shouldHave(text(yandexMarketItemName));
+
+        $(".n-title__text").shouldHave(text(yandexMarketItemName));
     }
+
 
 }
