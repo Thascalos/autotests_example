@@ -24,10 +24,8 @@ public class InstagramTests extends TestBase {
 
         open(instagramUrl);
 
-        $("html").shouldHave(text("INSTAGRAM ОТ FACEBOOK"));
-        $("[aria-label='Номер телефона, имя пользователя или эл. адрес']").setValue(instagramLogin); //$x("//input[@aria-label='Номер телефона, имя пользователя или эл. адрес']").setValue(instagramLogin);
-        $("[aria-label='Пароль']").setValue(instagramPassword); //$x("//input[@aria-label='Пароль']").setValue(instagramPassword);
-        $(byText("Войти")).click();  //$x("//div[text()='Войти']").waitUntil(enabled, 2000).click();
+        $(byName("username")).setValue(instagramLogin);
+        $(byName("password")).setValue(instagramPassword).pressEnter(); 
 
         sleep(2000); //waiting for auth, yep, nasty.
 
@@ -40,5 +38,6 @@ public class InstagramTests extends TestBase {
         $("html").shouldHave(text("Профиль сохранен."));
         $("#pepWebsite").shouldHave(value(gen));
     }
+
 
 }
