@@ -37,6 +37,7 @@ public class InstagramTests extends TestBase {
         $("[href='/accounts/edit/'] button").click();
         $("#pepWebsite").setValue(gen);
         $(byText("Отправить")).click(); //$x("//button[text()=\"Отправить\"]").waitUntil(enabled, 2000).click();
+        $("html").shouldHave(text("Профиль сохранен."));
         $("#pepWebsite").shouldHave(value(gen));
     }
 
