@@ -30,10 +30,11 @@ public class InstagramTests extends TestBase {
         $(byText("Войти")).click();  //$x("//div[text()='Войти']").waitUntil(enabled, 2000).click();
 
         sleep(2000); //waiting for auth, yep, nasty.
-        $("html").shouldHave(text("INSTAGRAM ОТ FACEBOOK")); //wait until new page fully loaded, if not - we will logout
 
-        open(instagramUrl + "accounts/edit/");
-        $("html").shouldHave(text("INSTAGRAM ОТ FACEBOOK")); //wait until new page fully loaded, if not - we will logout
+        $(byText("Не сейчас")).click();
+
+        $("a[style='width: 22px; height: 22px;']").click();
+        $("[href='/accounts/edit/'] button").click();
         $("#pepWebsite").setValue(gen);
         $(byText("Отправить")).click(); //$x("//button[text()=\"Отправить\"]").waitUntil(enabled, 2000).click();
         $("#pepWebsite").shouldHave(value(gen));

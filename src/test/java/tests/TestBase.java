@@ -14,7 +14,6 @@ public class TestBase {
     @BeforeAll
     public static void setUp() {
         Configuration.headless = Boolean.parseBoolean(isHeadless);
-
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
