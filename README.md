@@ -30,10 +30,10 @@ gradle YandexMarketTests -DyandexMarketItem="название товара" -Dis
 
 Запуск:
 ```sh 
-gradle instagramTests -Dlogin="ваш логин" -Dpass="ваш пароль" -DisHeadless=true 
+gradle instagramTests -DinstagramLogin="ваш логин" -DinstagramPass="ваш пароль" -DisHeadless=true 
 ```
-* login (type string) - ваш логин
-* pass (type string) - ваш пароль
+* instagramLogin (type string) - ваш логин
+* instagramPass (type string) - ваш пароль
 * isHeadless (type boolean) - режим запуска, может быть true / false, по дефолту true.
 
 Примечание: авторизация только стандартная, openid не реализован.
