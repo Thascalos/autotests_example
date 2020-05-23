@@ -1,33 +1,42 @@
 package tests;
 
-import io.qameta.allure.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.Environment.tinkoffUrl;
+import static io.qameta.allure.Allure.step;
 
 @Tag("tinkoff")
 public class TinkoffTests extends TestBase {
 
     @Test
-    @Description("Checks if link of deposit service page in header is working from main page")
+    @DisplayName("Проверка ссылки на страницу Вклады в шапке сайта")
     void clickDepositUrlInHeader() {
-        open("https://tinkoff.ru");
+        step("Открываем сайт", () -> open(tinkoffUrl));
 
-        $$(byAttribute("data-qa-type", "uikit/tabsWithDroplist.item")).findBy(text("Вклады")).click();
+        step ("Нажимаем на ссылку в шапке сайта страницы услуги Вклады", () ->
+                $$(byAttribute("data-qa-type", "uikit/tabsWithDroplist.item")).findBy(text("Вклады")).click()
+        );
 
-        $("h1").shouldHave(text("Откройте вклад"));
+        step("Проверяем наличие заголовка Откройте вклад", () ->
+                $("h1").shouldHave(text("Откройте вклад"))
+        );
     }
 
     @Test
-    @Description("Checks if link of deposit service page in footer is working from main page")
+    @DisplayName("Проверка ссылки на страницу Вклады в подвале сайта")
     void clickDepositUrlInFooter() {
-        open("https://tinkoff.ru");
+        step("Открываем сайт", () -> open(tinkoffUrl));
 
-        $$("a[class^='footer__']").findBy(text("Вклады")).click();
+        step ("Нажимаем на ссылку в подвале сайта страницы услуги Вклады", () ->
+                $$("a[class^='footer__']").findBy(text("Вклады")).click());
 
-        $("h1").shouldHave(text("Откройте вклад"));
+        step("Проверяем наличие заголовка Откройте вклад", () ->
+                $("h1").shouldHave(text("Откройте вклад"))
+        );
     }
 }
