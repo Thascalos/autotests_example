@@ -3,9 +3,8 @@ package tests;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.YandexMarketPage;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.Environment.*;
 
@@ -13,17 +12,15 @@ import static helpers.Environment.*;
 public class YandexMarketTests extends TestBase {
 
     @Test
-    @Description("Checking item can be found")
+    @Description("Checks if item can be found")
     void checkItemCanBeFound() {
+        YandexMarketPage yandexMarketPage = new YandexMarketPage();
+
         open(yandexMarketUrl);
 
-        $("html").shouldHave(text("Яндекс.Маркет"));
-        $("#header-search").val(yandexMarketItemName).pressEnter();
-        $x("//h3/a[1]").click();
-        switchTo().window(1);
+        yandexMarketPage.typeSearch(yandexMarketItemName);
+        yandexMarketPage.clickOnElement(0);
 
-        $(".n-title__text").shouldHave(text(yandexMarketItemName));
+        yandexMarketPage.verifyItemHeaderName(yandexMarketItemName);
     }
-
-
 }
