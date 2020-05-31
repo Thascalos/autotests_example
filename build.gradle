@@ -14,9 +14,7 @@ plugins {
 }
 
 group 'cloud.autotests'
-version '1.0.4'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+version '1.0.5'
 defaultTasks 'help'
 
 ext {
@@ -71,6 +69,19 @@ tasks.withType(Test) {
         showExceptions true
         showCauses true
         showStackTraces true
+    }
+}
+
+task RunAllWithoutAuth(type: Test) {
+    useJUnitPlatform {
+        includeTags 'yandexmarket'
+        includeTags 'tinkoff'
+    }
+}
+
+task RunAllWitAuth(type: Test) {
+    useJUnitPlatform {
+        includeTags 'instagram'
     }
 }
 
