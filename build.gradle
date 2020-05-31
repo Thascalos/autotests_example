@@ -79,7 +79,7 @@ task RunAllWithoutAuth(type: Test) {
     }
 }
 
-task RunAllWitAuth(type: Test) {
+task RunAllWithAuth(type: Test) {
     useJUnitPlatform {
         includeTags 'instagram'
     }

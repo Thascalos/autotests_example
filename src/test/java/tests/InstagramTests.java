@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.Description;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.InstagramProfilePage;
@@ -15,6 +16,7 @@ import static helpers.Environment.instagramPassword;
 public class InstagramTests extends TestBase {
 
     @Test
+    @DisplayName("Аутентификация в инстаграме и изменение персонального сайта в профиле")
     @Description("Changes personal website in instagram profile")
     void changeWebsiteInfoInInstagramProfile() {
         InstagramProfilePage instagramProfilePage = new InstagramProfilePage();

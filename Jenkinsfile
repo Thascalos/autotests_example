@@ -1,7 +1,7 @@
 pipeline {
 
     parameters {
-        string(name: 'SELENIDE_URL', defaultValue: 'http://docker.lan:4444/wd/hub/', description: 'URL for selenide instance')
+        string(name: 'SELENOID_URL', defaultValue: 'docker.lan', description: 'URL for selenoid instance')
     }
 
     agent any
@@ -32,29 +32,29 @@ pipeline {
                 stage('Checking non-auth tests') {
                     steps {
                         script {
-                            sh '''./gradlew YandexMarketTests TinkoffTests -Dselenide_url="''' + params.SELENIDE_URL + '''" --no-daemon'''
+                            sh '''./gradlew RunAllWithoutAuth -DisHeadless=false -Dselenoid_url="''' + params.SELENOID_URL + '''" --no-daemon'''
                         }
                     }
                 }
                 stage('Checking tests with auth') {
                     steps {
                         script {
-                            try {
-                                sh '''./gradlew InstagramTests -Dselenide_url="''' + params.SELENIDE_URL + '''" --no-daemon'''
-                            } finally {
-                                    allure([
-                                        includeProperties: false,
-                                        jdk: '',
-                                        properties: [],
-                                        reportBuildPolicy: 'ALWAYS',
-                                        results: [[path: 'build/allure-results']]
-                                    ])
-                            }
+                            sh '''./gradlew RunAllWithAuth -DisHeadless=false -Dselenoid_url="''' + params.SELENOID_URL + '''" --no-daemon'''
                         }
                     }
-
                 }
             }
+        }
+    }
+    post {
+        always {
+                 allure([
+                     includeProperties: false,
+                     jdk: '',
+                     properties: [],
+                     reportBuildPolicy: 'ALWAYS',
+                     results: [[path: 'build/allure-results']]
+                 ])
         }
     }
 }
