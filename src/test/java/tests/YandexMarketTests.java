@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.YandexMarketPage;
@@ -12,6 +13,7 @@ import static helpers.Environment.*;
 public class YandexMarketTests extends TestBase {
 
     @Test
+    @DisplayName("Проверка поиска товара в яндекс маркете")
     @Description("Checks if item can be found")
     void checkItemCanBeFound() {
         YandexMarketPage yandexMarketPage = new YandexMarketPage();
