@@ -4,6 +4,7 @@ public class Environment {
 
     public final static String
             isHeadless = System.getProperty("isHeadless", "true"),
+            selenoid_url = System.getProperty("selenoid_url"),
             yandexMarketUrl = System.getProperty("yandexMarketUrl", "https://market.yandex.ru/"),
             yandexMarketItemName = System.getProperty("yandexMarketItem", "iphone"),
             instagramUrl = System.getProperty("instagramUrl", "https://www.instagram.com/"),
