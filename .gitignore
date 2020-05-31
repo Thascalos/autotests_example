@@ -12,6 +12,8 @@
 
 # Package Files #
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
+!allure-piechart-telegram-1.1.jar
 *.war
 *.nar
 *.ear
