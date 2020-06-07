@@ -16,7 +16,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 group 'cloud.autotests'
-version '1.0.5'
+version '1.0.6'
 defaultTasks 'help'
 
 ext {
@@ -46,6 +46,7 @@ dependencies {
     testImplementation "io.qameta.allure:allure-rest-assured:${allureVersion}"
     testImplementation 'io.rest-assured:rest-assured:4.1.2'
     testImplementation 'ch.qos.logback:logback-classic:1.2.3'
+    testImplementation 'com.codeborne:xls-test:1.4.2'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
@@ -100,6 +101,12 @@ task YandexMarketTests(type: Test) {
 task InstagramTests(type: Test) {
     useJUnitPlatform {
         includeTags 'instagram'
+    }
+}
+
+task RailContinentTests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'railcontinent'
     }
 }
 
