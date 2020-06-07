@@ -1,10 +1,11 @@
 package helpers;
 
+import static java.lang.Boolean.parseBoolean;
+
 public class Environment {
 
     public final static String
-            isHeadless = System.getProperty("isHeadless", "true"),
-            selenoid_url = System.getProperty("selenoid_url"),
+            selenoidUrl = System.getProperty("selenoid_url", "selenoid.autotests.cloud"),
             yandexMarketUrl = System.getProperty("yandexMarketUrl", "https://market.yandex.ru/"),
             yandexMarketItemName = System.getProperty("yandexMarketItem", "iphone"),
             instagramUrl = System.getProperty("instagramUrl", "https://www.instagram.com/"),
@@ -12,4 +13,8 @@ public class Environment {
             instagramPassword = System.getProperty("instagramPass"),
             tinkoffUrl = System.getProperty("tinkoffUrl", "https://tinkoff.ru/"),
             railcontinentUrl = System.getProperty("railcontinentUrl", "https://www.railcontinent.ru/");
+
+    public final static boolean
+            isHeadless = parseBoolean(System.getProperty("isHeadless", "false")),
+            isSelenoid = selenoidUrl != null;
 }

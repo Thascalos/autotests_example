@@ -9,9 +9,7 @@ import java.io.FileNotFoundException;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static helpers.Environment.selenoid_url;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static utils.FileUtils.*;
 
 public class RailcontinentPage {
     SelenideElement menuItemConditions = $(byText("Условия перевозок")),
@@ -20,46 +18,20 @@ public class RailcontinentPage {
 
 
     @Step("Переходим в раздел \"Документы\"")
-    public void clickOnDocuments() {
+    public void openDocumentsPage() {
         menuItemConditions.hover();
         subMenuItemDocuments.click();
     }
 
     @Step("Скачиваем файл \"Список режимных грузов\"")
-    public File cargoListXlsDownload() throws FileNotFoundException {
+    public File downloadCargoXls() throws FileNotFoundException {
         return cargoListExcel.download();
     }
 
-    @Step("Скачиваем файл \"Список режимных грузов\" в selenoid")
-    public void downloadFileFromPageToSelenoid() {
-        cargoListExcel.click();
-    }
-
-    @Step("Скачиваем файл \"Список режимных грузов\" из selenoid")
-    public String downloadFileFromPageFromSelenoid() {
-        String url = cargoListExcel.getAttribute("href");
-        assert url != null;
-
-        String filename = getFileNameFromUrl(url);
-
-        getFileFromContainer(filename);
-
-        return filename;
-    }
-
     @Step("Проверяем наличие слова \"{text}\" в XLS файле \"Список режимных грузов\"")
-    public void checksIfTextFoundInFile(String text) throws FileNotFoundException, NullPointerException {
-        if (selenoid_url != null) {
-            downloadFileFromPageToSelenoid();
-            String filename = downloadFileFromPageFromSelenoid();
+    public void findTextInXls(String text) throws FileNotFoundException, NullPointerException {
+        XLS xls = new XLS(downloadCargoXls());
 
-            XLS xls = new XLS(readBytesFromFile("build/downloads/" + filename));
-
-            assertThat(xls, XLS.containsText(text));
-        } else {
-            XLS xls = new XLS(cargoListXlsDownload());
-
-            assertThat(xls, XLS.containsText(text));
-        }
+        assertThat(xls, XLS.containsText(text));
     }
 }
