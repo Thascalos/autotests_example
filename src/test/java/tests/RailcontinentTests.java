@@ -1,33 +1,27 @@
 package tests;
 
-import com.codeborne.xlstest.XLS;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
+import pages.RailcontinentPage;
 import java.io.FileNotFoundException;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static helpers.Environment.railcontinentUrl;
 
 @Tag("railcontinent")
 public class RailcontinentTests extends TestBase {
 
     @Test
-    @DisplayName("Проверка соответствия текста  в xls файле")
+    @DisplayName("Проверка наличия текста в xls файле")
     void checkContentInRegimeCargoList() throws FileNotFoundException {
-        open("https://www.railcontinent.ru/");
-        $(byText("Условия перевозок")).hover();
-        $(byText("Документы")).click();
+        RailcontinentPage railcontinentPage = new RailcontinentPage();
 
-        File cargoListExcel = $(byText("Список режимных грузов")).download();
+        open(railcontinentUrl);
 
-        XLS xls = new XLS(cargoListExcel);
-        assertThat(xls, XLS.containsText("З И М А"));
-        assertThat(xls, XLS.containsText("Наименование груза"));
-        assertThat(xls, XLS.containsText("Гарантийное письмо"));
-        assertThat(xls, XLS.containsText("Вода"));
+        railcontinentPage.clickMenuItemConditions();
+        railcontinentPage.clickOnSubMenuItemDocuments();
+
+        railcontinentPage.checksIfTextFoundInFile("З И М А");
     }
 }

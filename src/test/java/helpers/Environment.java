@@ -10,5 +10,6 @@ public class Environment {
             instagramUrl = System.getProperty("instagramUrl", "https://www.instagram.com/"),
             instagramLogin = System.getProperty("instagramLogin"),
             instagramPassword = System.getProperty("instagramPass"),
-            tinkoffUrl = System.getProperty("tinkoffUrl", "https://tinkoff.ru/");
+            tinkoffUrl = System.getProperty("tinkoffUrl", "https://tinkoff.ru/"),
+            railcontinentUrl = System.getProperty("railcontinentUrl", "https://www.railcontinent.ru/");
 }
