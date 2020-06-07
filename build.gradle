@@ -16,7 +16,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 group 'cloud.autotests'
-version '1.0.6'
+version '1.0.7'
 defaultTasks 'help'
 
 ext {
@@ -77,6 +77,7 @@ task RunAllWithoutAuth(type: Test) {
     useJUnitPlatform {
         includeTags 'yandexmarket'
         includeTags 'tinkoff'
+        includeTags 'railcontinent'
     }
 }
 

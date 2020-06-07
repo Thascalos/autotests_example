@@ -1,13 +1,17 @@
 package utils;
 
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static helpers.Environment.selenoid_url;
+import static org.apache.commons.io.FileUtils.copyURLToFile;
 
 public class FileUtils {
 
@@ -21,28 +25,26 @@ public class FileUtils {
         return new byte[]{};
     }
 
-    public String readStringFromFile(String filePath) {
-        return new String(readBytesFromFile(filePath));
-    }
+    public static void getFileFromContainer(String exportFileName) {
 
-    public void saveFile(String content, String filePath)  {
-        File file = new File(filePath);
-        try {
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-            PrintWriter writer = new PrintWriter(file, "UTF-8");
-            writer.write(content);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String session = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+        String path = "http://" + selenoid_url + ":4444/download/" + session + "/" + exportFileName;
+
+        int retryCount = 1;
+        while (retryCount <= 10) {
+            try {
+                copyURLToFile(new URL(path), new File("build/downloads/" + exportFileName));
+                break;
+            } catch (IOException e) {
+                System.out.println("Файл не найден. Попытка " + retryCount + " из 10 " + path);
+                sleep(1000);
+                retryCount++;
+            }
         }
     }
 
-    private String resourcePath(String file) {
-        URL resource = Thread.currentThread().getContextClassLoader().getResource(file);
-        assertNotNull(resource, "Resource not found in classpath: " + file);
-        return resource.getFile();
+    public static String getFileNameFromUrl(String url) {
+        return url.substring(url.lastIndexOf('/')).substring(1);
     }
 
 }
