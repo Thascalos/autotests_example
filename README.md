@@ -55,3 +55,20 @@ gradle instagramTests -DinstagramLogin="ваш логин" -DinstagramPass="ва
 gradle tinkoffTests -DisHeadless=true 
 ```
 * isHeadless (type boolean) - режим запуска, может быть true / false, по дефолту true.
+
+# 4 тест-кейс:
+
+Тест на проверку содержимого файла (xls), скачанного с сайта railcontinent.ru
+
+1. Открыть сайт https://railcontinent.ru
+2. Нажать на раздел документы в верхнем меню
+3. Скачать файл "Список режимных грузов"
+    1. Если используется selenoid, то скачать с удалённого контейнера файл в сборочную директорию
+4. Проверить что в файле есть слово "З И М А"
+
+Запуск:
+```sh 
+gradle RailcontinentTests -DisHeadless=true 
+```
+* isHeadless (type boolean) - режим запуска, может быть true / false, по дефолту true.
+
