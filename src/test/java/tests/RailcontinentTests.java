@@ -19,8 +19,7 @@ public class RailcontinentTests extends TestBase {
 
         open(railcontinentUrl);
 
-        railcontinentPage.clickMenuItemConditions();
-        railcontinentPage.clickOnSubMenuItemDocuments();
+        railcontinentPage.clickOnDocuments();
 
         railcontinentPage.checksIfTextFoundInFile("З И М А");
     }

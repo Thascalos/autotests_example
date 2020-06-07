@@ -19,13 +19,9 @@ public class RailcontinentPage {
             cargoListExcel = $(byText("Список режимных грузов"));
 
 
-    @Step("Наводим мышкой на элемент в главном меню 'Условия перевозок'")
-    public void clickMenuItemConditions() {
+    @Step("Переходим в раздел \"Документы\"")
+    public void clickOnDocuments() {
         menuItemConditions.hover();
-    }
-
-    @Step("Нажимаем на ссылку раздела документы")
-    public void clickOnSubMenuItemDocuments() {
         subMenuItemDocuments.click();
     }
 
