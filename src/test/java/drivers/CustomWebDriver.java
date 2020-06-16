@@ -58,7 +58,7 @@ public class CustomWebDriver implements WebDriverProvider {
 
     private URL getRemoteWebdriverUrl() {
         try {
-            return new URL( "http://" + selenoidUrl + ":4444/wd/hub/");
+            return new URL( "https://" + selenoidUsername + ":" + selenoidPassword + "@" + selenoidUrl + ":4444/wd/hub/");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
