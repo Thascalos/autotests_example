@@ -41,13 +41,6 @@ public class RailcontinentPage {
     ElementsCollection clientsLogo = $$(".client-logo"),
             linksInFooter = $$("a[class='item']");
 
-//            subMenuItemDocuments =  $(byText("Документы")),
-//            subMenuItemDocuments =  $(byText("Документы")),
-//            subMenuItemDocuments =  $(byText("Документы")),
-//            subMenuItemDocuments =  $(byText("Документы")),
-//            subMenuItemDocuments =  $(byText("Документы"));
-
-
     @Step("Переходим в раздел \"Документы\"")
     public void openDocumentsPage() {
         menuItemConditions.hover();

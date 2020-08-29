@@ -21,7 +21,7 @@ public class YandexMarketTests extends TestBase {
         open(yandexMarketUrl);
 
         yandexMarketPage.typeSearch(yandexMarketItemName);
-        yandexMarketPage.clickOnElement(0);
+        yandexMarketPage.clickOnProductIndex(0);
 
         yandexMarketPage.verifyItemHeaderName(yandexMarketItemName);
     }

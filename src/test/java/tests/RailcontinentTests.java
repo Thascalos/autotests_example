@@ -76,7 +76,7 @@ public class RailcontinentTests extends TestBase {
 
         railcontinentPage.calculateFreightTransportation("Москва", "Санкт-Петербург", "1", "1");
 
-        railcontinentPage.checkTextExistance("2 035");
+        railcontinentPage.checkTextExistance("2 100");
     }
 
     @Test
@@ -86,7 +86,7 @@ public class RailcontinentTests extends TestBase {
 
         open(railcontinentUrl);
 
-        railcontinentPage.checkOrderStatus("Т1658691","3696");
+        railcontinentPage.checkOrderStatus("Т1658691", "3696");
 
         railcontinentPage.checkTextExistanceInModal("Выдан клиенту на терминале ВОЛГОГРАД");
     }

@@ -14,7 +14,7 @@
 
 Запуск:
 ```sh
-gradle YandexMarketTests -DyandexMarketItem="название товара" -DisHeadless=true
+gradle YandexMarketTests -DyandexMarketItem="название товара" -DisHeadless=true 
 ```
 * yandexMarketItem (type string) - название товара, по дефолту "iphone",
 * isHeadless (type boolean) - режим запуска, может быть true / false, по дефолту true.
@@ -30,7 +30,7 @@ gradle YandexMarketTests -DyandexMarketItem="название товара" -Dis
 
 Запуск:
 ```sh 
-gradle instagramTests -DinstagramLogin="ваш логин" -DinstagramPass="ваш пароль" -DisHeadless=true 
+gradle instagramTests -DinstagramLogin="ваш логин" -DinstagramPass="ваш пароль" -DisHeadless=true  
 ```
 * instagramLogin (type string) - ваш логин
 * instagramPass (type string) - ваш пароль
@@ -58,17 +58,22 @@ gradle tinkoffTests -DisHeadless=true
 
 # 4 тест-кейс:
 
-Тест на проверку содержимого файла (xls), скачанного с сайта railcontinent.ru
+Тест-план на проверку сайта https://railcontinent.ru
+Реализован в системе Allure EE
 
-1. Открыть сайт https://railcontinent.ru
-2. Нажать на раздел документы в верхнем меню
-3. Скачать файл "Список режимных грузов"
-    1. Если используется selenoid, то скачать с удалённого контейнера файл в сборочную директорию
-4. Проверить что в файле есть слово "З И М А"
+1. Проверка актуальности акции при заказе через интернет
+2. Проверка наличия логотипов клиентов
+3. Проверка наличия текста в xls файле
+4. Проверка работоспособности кнопки "Задать вопрос онлайн" (ручной тест в Allure EE)
+5. Проверка работоспособности кнопки заказа обратного звонка (ручной тест в Allure EE)
+6. Проверка расчёта стоимости перевозки
+7. Проверка статуса накладной Т1658691
+8. Проверка страницы услуги "Страхование"
+9. Проверка существования нужной фразы на странице "О нас"
 
 Запуск:
 ```sh 
 gradle RailcontinentTests -DisHeadless=true 
 ```
-* isHeadless (type boolean) - режим запуска, может быть true / false, по дефолту true.
+* isHeadless (type boolean) - режим запуска окна браузера, может быть true / false, по дефолту false.
 

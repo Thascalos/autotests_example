@@ -22,7 +22,7 @@ public class InstagramProfilePage {
         loginInput.setValue(username);
         passwordInput.setValue(password).pressEnter();
 
-        loginInput.waitUntil(disappear,10000); //waits unlil we log in, username input should dissapear
+        loginInput.waitUntil(disappear,10000); // waits unlil we log in, username input should dissapear
 
         if (passwordPopUp.exists()) {
             passwordPopUp.click(); // if remember password pop-up is presented, then click
