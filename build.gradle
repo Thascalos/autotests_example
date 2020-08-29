@@ -1,12 +1,3 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath group: 'io.qameta.allure', name: 'allure-gradle', version: '2.8.1'
-    }
-}
-
 plugins {
     id 'java-library'
     id 'application'
