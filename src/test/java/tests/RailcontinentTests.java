@@ -76,7 +76,7 @@ public class RailcontinentTests extends TestBase {
 
         railcontinentPage.calculateFreightTransportation("Москва", "Санкт-Петербург", "1", "1");
 
-        railcontinentPage.checkTextExistance("2 035");
+        railcontinentPage.checkTextExistance("2 100");
     }
 
     @Test
