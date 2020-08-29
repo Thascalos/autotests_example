@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.Environment.tinkoffUrl;
@@ -19,7 +20,7 @@ public class TinkoffTests extends TestBase {
         step("Открываем сайт", () -> open(tinkoffUrl));
 
         step ("Нажимаем на ссылку в шапке сайта страницы услуги Вклады", () ->
-                $$(byAttribute("data-qa-type", "uikit/tabsWithDroplist.item")).findBy(text("Вклады")).click()
+                $$(by("data-qa-type", "uikit/tabsWithDroplist.item")).findBy(text("Вклады")).click()
         );
 
         step("Проверяем наличие заголовка Откройте вклад", () ->

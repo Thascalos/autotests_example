@@ -20,7 +20,7 @@ public class InstagramTests extends TestBase {
     @Description("Changes personal website in instagram profile")
     void changeWebsiteInfoInInstagramProfile() {
         InstagramProfilePage instagramProfilePage = new InstagramProfilePage();
-        String site = "https://" + RandomStringUtils.randomAlphanumeric(10).toLowerCase() + ".ru/"; //generates random url
+        String site = "https://" + RandomStringUtils.randomAlphanumeric(10).toLowerCase() + ".ru/"; // generates random url
 
         open(instagramUrl);
 

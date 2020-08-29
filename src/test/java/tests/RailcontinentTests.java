@@ -86,7 +86,7 @@ public class RailcontinentTests extends TestBase {
 
         open(railcontinentUrl);
 
-        railcontinentPage.checkOrderStatus("Т1658691","3696");
+        railcontinentPage.checkOrderStatus("Т1658691", "3696");
 
         railcontinentPage.checkTextExistanceInModal("Выдан клиенту на терминале ВОЛГОГРАД");
     }
