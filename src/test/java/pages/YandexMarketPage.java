@@ -6,11 +6,13 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byTagName;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class YandexMarketPage {
     SelenideElement searchInput = $("#header-search"),
-                    itemHeaderText =  $(byTagName("h1"));
+                    itemHeaderText = $(byTagName("h1")),
+                    cookieAcceptMessageText = $(byText("Accept"));
 
     ElementsCollection productElements = $$x("//h3/a[1]");
 
@@ -21,6 +23,9 @@ public class YandexMarketPage {
 
     @Step("Переходим по ссылке на порядковый номер нужного товара")
     public void clickOnProductIndex(int number) {
+        if (cookieAcceptMessageText.exists()) {
+            cookieAcceptMessageText.click(); // if cookie pop-up is presented, then click
+        }
         productElements.get(number).click();
         switchTo().window(1);
     }
